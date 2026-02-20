@@ -1,1 +1,14 @@
-<h1>OI</h1>
+<h1>{{ section.settings.page__title }}</h1>
+
+{%  schema  %} 
+{
+  "name": "Lotion LP",
+  "settings": [
+    {
+      "type": "text",
+      "id": "page__title",
+      "label": "Título da Página"
+    }
+  ]
+}
+{% endschema %}
