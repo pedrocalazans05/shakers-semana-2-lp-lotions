@@ -1,0 +1,25 @@
+.hero__section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  anchor-name: --image__anchor;
+}
+
+.hero__text {
+  position-anchor: --image__anchor;
+  position: fixed;
+  top: anchor(40%);
+  left: anchor(0%);
+
+  margin-inline-start: 1.875rem;
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+  }
+
+  p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+  }
+}
