@@ -1,0 +1,47 @@
+{{ 'hero.css' | asset_url | stylesheet_tag }}
+
+<section class="hero__section">
+    <figure>
+      {% if section.settings.image != blank %}
+        <img
+          src="{{ section.settings.image |image_url: width: 1200 }}"
+          alt="{{ section.settings.title }}"
+        >
+      {% endif %}
+    </figure>
+
+    <div class="hero__text">
+      <h2>{{ section.settings.title }}</h2>
+      <p>{{ section.settings.subtitle }}</p>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Configurações Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagem de Fundo"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título Principal",
+      "default": "Nova Coleção"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Descubra nossa nova linha exclusiva de perfumes"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Section"
+    }
+  ]
+}
+{% endschema %}
