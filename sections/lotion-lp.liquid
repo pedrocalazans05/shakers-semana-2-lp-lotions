@@ -1,67 +1,106 @@
 {{ 'lotion-lp.css' | asset_url | stylesheet_tag }}
+
 <section class="product__collection">
-{% if section.settings.show_products %}
-  
-    <div class="product__collection--title">
-      <h1>{{ section.settings.page__title }}</h1>
-      <p>{{ section.settings.page__content }}</p>
-    </div>
+  <div class="product__collection--title">
+    <h2>{{ section.settings.page__title }}</h2>
+    <p>{{ section.settings.page__content }}</p>
+  </div>
 
-    <div class="product__collection--grid">
-      {% assign selected_products = section.settings.selected_products %}
+  <div class="product__collection--grid">
+    {% assign selected__products = section.settings.selected__products %}
 
-      {% if selected_products != blank %}
-        {% for product in selected_products %}
-          <a href="{{ product.url }}">
-            <div class="product__card--container">
-              <div class="product__card">
-                {% if product.featured_image %}
-                  <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}">
-                {% endif %}
-                <h3>{{ product.title }}</h3>
-                <p class="product__price">{{ product.price | money }}</p>
-              </div>
+    {% if selected__products != blank %}
+      {% for product in selected__products %}
+        <a href="{{ product.url }}">
+          <div class="product__card--container">
+            <div class="product__card">
+              {% if product.featured_image %}
+                <img src="{{ product.featured_image | image_url: width: 350 }}" alt="{{ product.title }}">
+              {% endif %}
+              <h3>{{ product.title }}</h3>
+              <p class="product__price">{{ product.price | money }}</p>
             </div>
-          </a>
-        {% endfor %}
-      {% else %}
-        <p>Por favor, selecione os produtos no painel de personalização.</p>
-      {% endif %}
-    </div>
-  
-{% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    {% else %}
+      <p>Por favor, selecione os produtos no painel Admin.</p>
+    {% endif %}
+  </div>
 </section>
 
+<section class="product__featured--section">
+  <div class="product__featured--title">
+    <h2>{{ section.settings.section__title }}</h2>
+    <p>{{ section.settings.page__content--featured }}</p>
+  </div>
+
+  <div class="product__featured--container">
+    {% assign product = section.settings.selected__product %}
+
+    {% if product != blank %}
+      {% if product.featured_image %}
+        <div class="featured__product--image">
+          <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title }}">
+        </div>
+      {% endif %}
+
+      <div class="product__featured--info">
+        <h3>{{ product.title }}</h3>
+        <p class="price">{{ product.price | money }}</p>
+
+        <a href="{{ product.url }}" class="product__featured--button">Comprar</a>
+      </div>
+    {% else %}
+      <p>Por favor, selecione um produto no painel Admin.</p>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  
+</style>
+
+
 {% schema %}
-{
-  "name": "Lotion LP",
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "show_products",
-      "label": "Mostrar área de produtos",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "page__title",
-      "label": "Título da sessão produtos"
-    },
-    {
-      "type": "textarea",
-      "id": "page__content",
-      "label": "Descrição da sessão de produtos"
-    },
-    {
-      "type": "product_list",
-      "id": "selected_products",
-      "label": "Escolher Produtos"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Lotion LP"
-    }
-  ]
-}
+  {
+    "name": "Lotion LP",
+    "settings": [
+      {
+        "type": "text",
+        "id": "page__title",
+        "label": "Título da seção produtos",
+        "default": "Nossos Produtos"
+      },
+      {
+        "type": "textarea",
+        "id": "page__content",
+        "label": "Descrição da seção de produtos"
+      },
+      {
+        "type": "product_list",
+        "id": "selected__products",
+        "label": "Escolher Produtos"
+      },
+      {
+        "type": "text",
+        "id": "section__title",
+        "label": "Título da Seção",
+        "default": "Destaque da Semana"
+      }, {
+        "type": "textarea",
+        "id": "page__content--featured",
+        "label": "Descrição da Seção"
+      }, {
+        "type": "product",
+        "id": "selected__product",
+        "label": "Escolher Produto Principal"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Lotion LP"
+      }
+    ]
+  }
 {% endschema %}
