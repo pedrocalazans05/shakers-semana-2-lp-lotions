@@ -29,10 +29,13 @@ Para testar este tema no teu ambiente local, certifique-se de que tenha o [Shopi
 
 <br>
 
-## 💻 Pull Requests 
+## 🔗 Links da Entrega
 
-Link para o pull request aberto:
+Aqui estão os links com a demonstração de tudo isso funcionando na prática:
 
-[Pull Requests](https://github.com/pedrocalazans05/shakers-semana-2-lp-lotions/pull/5)
+* **Meu Pull Request:** [Pull Request](https://github.com/pedrocalazans05/shakers-semana-2-lp-lotions/pull/5)
+* **Vídeo de Demonstração:** [Video](https://drive.google.com/drive/folders/1oUqnoSjMazMpelt_8t0VWiB5ULosVWsf?usp=sharing)
+
+<br>
 
 Made by Pedro Calazans 🤠
