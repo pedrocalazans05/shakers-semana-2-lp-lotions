@@ -1,13 +1,61 @@
-<h1>{{ section.settings.page__title }}</h1>
+{{ 'lotion-lp.css' | asset_url | stylesheet_tag }}
+<section class="product__collection">
+{% if section.settings.show_products %}
+  
+    <div class="product__collection--title">
+      <h1>{{ section.settings.page__title }}</h1>
+      <p>{{ section.settings.page__content }}</p>
+    </div>
 
-{%  schema  %} 
+    <div class="product__collection--grid">
+      {% assign selected_products = section.settings.selected_products %}
+
+      {% if selected_products != blank %}
+        {% for product in selected_products %}
+          <a href="{{ product.url }}">
+            <div class="product__card--container">
+              <div class="product__card">
+                {% if product.featured_image %}
+                  <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}">
+                {% endif %}
+                <h3>{{ product.title }}</h3>
+                <p class="product__price">{{ product.price | money }}</p>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      {% else %}
+        <p>Por favor, selecione os produtos no painel de personalização.</p>
+      {% endif %}
+    </div>
+  
+{% endif %}
+</section>
+
+{% schema %}
 {
   "name": "Lotion LP",
   "settings": [
     {
+      "type": "checkbox",
+      "id": "show_products",
+      "label": "Mostrar área de produtos",
+      "default": true
+    },
+    {
       "type": "text",
       "id": "page__title",
-      "label": "Título da Página"
+      "label": "Título da sessão produtos"
+    },
+    {
+      "type": "textarea",
+      "id": "page__content",
+      "label": "Descrição da sessão de produtos"
+    },
+    {
+      "type": "product_list",
+      "id": "selected_products",
+      "label": "Escolher Produtos"
     }
   ],
   "presets": [
