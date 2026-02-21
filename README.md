@@ -29,4 +29,10 @@ Para testar este tema no teu ambiente local, certifique-se de que tenha o [Shopi
 
 <br>
 
+## 💻 Pull Requests 
+
+Link para o pull request aberto:
+
+[Pull Requests](https://github.com/pedrocalazans05/shakers-semana-2-lp-lotions/pull/5)
+
 Made by Pedro Calazans 🤠
