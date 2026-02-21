@@ -1,0 +1,43 @@
+.product__collection {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin-inline: auto;
+
+    .product__collection--title {
+        text-align: center;
+        margin-block-end: 40px;
+    }
+
+    .product__collection--grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a:hover {
+            color: #000;
+        }
+    }
+}
+
+.product__card {
+    text-align: center;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    h3 {
+        margin-block: 10px;
+    }
+}
+
+.product__price {
+    font-weight: bold;
+    margin-block: 15px;
+}
